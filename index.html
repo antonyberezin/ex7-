@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Justice First Legal Advisors</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+:root{--bg:#f6f4ee;--card:#fff;--ink:#16213a;--mut:#667089;--navy:#16213a;--gold:#b8923a;--line:#e3ddcc;--ok:#2e7d5b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--card:#1a2340;--ink:#eef0f7;--mut:#a3accb;--line:#2e3a5e;color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink);line-height:1.5}
+h1,h2,h3{margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:#16213a;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 5%;z-index:5;flex-wrap:wrap;gap:8px}
+nav b{font-size:1.15rem;color:#e0c070}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-family:Arial,sans-serif;font-size:.9rem;cursor:pointer}
+nav a:hover{color:#e0c070}
+.hero{text-align:center;padding:84px 5%;background:linear-gradient(135deg,#0d1428,#16213a 60%,#2a3a66);color:#fff}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem)}
+.hero .em{font-size:3rem}
+.hero p{max-width:540px;margin:12px auto 24px;font-size:1.1rem;color:#d7dcec}
+button{font-family:Arial,sans-serif;cursor:pointer;border:0;border-radius:6px;padding:10px 18px;font-size:.95rem;background:var(--gold);color:#fff}
+button:hover{opacity:.9}
+button.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+button.alt.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+section{padding:56px 5%;max-width:1000px;margin:auto}
+section h2{text-align:center;color:var(--gold);margin-bottom:6px;font-size:1.9rem}
+.sub{text-align:center;color:var(--mut);margin-bottom:24px;font-family:Arial,sans-serif;font-size:.95rem}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.area{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:transform .2s}
+.area:hover{transform:translateY(-4px)}
+.area .ic{font-size:2.6rem}
+.area .d{display:none;margin-top:8px;font-size:.85rem;color:var(--mut);font-family:Arial,sans-serif}
+.area .p{color:var(--gold);font-weight:bold;font-family:Arial,sans-serif}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;max-width:640px;margin:auto;font-family:Arial,sans-serif}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+input[type=number],input[type=text]{width:100px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font-size:1rem}
+.bill{margin-top:16px;border-top:2px dashed var(--line);padding-top:12px;display:none}
+.bill .tot{display:flex;justify-content:space-between;background:var(--ok);color:#fff;padding:10px 14px;border-radius:6px;font-weight:bold;margin-top:8px}
+.boxes{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.box{flex:1;min-width:120px;color:#fff;padding:12px;border-radius:6px;text-align:center;font-size:.9rem;display:none}
+.paper{background:#fffdf5;color:#222;border:1px solid #ccc;border-radius:6px;padding:22px;text-align:center;margin-bottom:16px;transition:all .4s;min-height:180px}
+.paper h3{font-size:1.2em;letter-spacing:1px}
+.paper p{margin:10px 0}
+.seal{display:inline-block;width:52px;height:52px;border-radius:50%;background:#b8923a;color:#fff;line-height:52px;font-size:1.5em;transition:background .4s}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.note{font-size:.8rem;color:var(--mut);text-align:center;margin-top:12px;font-family:Arial,sans-serif}
+footer{background:#16213a;color:#d7dcec;text-align:center;padding:24px 5%;font-family:Arial,sans-serif;font-size:.85rem}
+</style>
+</head>
+<body>
+<nav>
+  <b>⚖️ Justice First</b>
+  <div><a data-go="#areas">Practice Areas</a><a data-go="#fees">Fee Estimate</a><a data-go="#budget">Case Budget</a><a data-go="#notice">Notice Workshop</a></div>
+</nav>
+
+<div class="hero">
+  <div class="em">⚖️</div>
+  <h1>Justice First Legal Advisors</h1>
+  <p id="tagline">Clear, confidential and trusted legal advice for individuals and businesses.</p>
+  <button id="heroBtn">Get a Fee Estimate</button>
+</div>
+
+<section id="areas">
+  <h2>Practice Areas</h2>
+  <div class="sub">Filter by category. Click a card to read more.</div>
+  <div class="filters">
+    <button class="alt on" data-f="all">All</button>
+    <button class="alt" data-f="personal">Personal</button>
+    <button class="alt" data-f="business">Business</button>
+    <button class="alt" data-f="criminal">Criminal</button>
+  </div>
+  <div class="grid">
+    <div class="area" data-c="personal"><div class="ic">👪</div><h3>Family Law</h3><div class="p">From Rs.1500 / hr</div><div class="d">Divorce, custody, maintenance and adoption matters handled with sensitivity.</div></div>
+    <div class="area" data-c="personal"><div class="ic">🏠</div><h3>Property Law</h3><div class="p">From Rs.2000 / hr</div><div class="d">Title verification, sale deeds, tenancy and land dispute resolution.</div></div>
+    <div class="area" data-c="business"><div class="ic">🏢</div><h3>Corporate Law</h3><div class="p">From Rs.3000 / hr</div><div class="d">Company registration, contracts, compliance and trademarks.</div></div>
+    <div class="area" data-c="criminal"><div class="ic">🛡️</div><h3>Criminal Defence</h3><div class="p">From Rs.2500 / hr</div><div class="d">Bail applications, trial representation and appeals.</div></div>
+  </div>
+</section>
+
+<section id="fees">
+  <h2>Consultation Fee Estimate</h2>
+  <div class="sub">Enter the hours of consultation you need for each service.</div>
+  <div class="panel">
+    <div class="row"><label>Family Law (Rs.1500/hr)</label><input type="number" min="0" class="hrs" data-n="Family Law" data-p="1500" value="2"></div>
+    <div class="row"><label>Property Law (Rs.2000/hr)</label><input type="number" min="0" class="hrs" data-n="Property Law" data-p="2000" value="1"></div>
+    <div class="row"><label>Corporate Law (Rs.3000/hr)</label><input type="number" min="0" class="hrs" data-n="Corporate Law" data-p="3000" value="0"></div>
+    <div class="row"><label>Criminal Defence (Rs.2500/hr)</label><input type="number" min="0" class="hrs" data-n="Criminal Defence" data-p="2500" value="1"></div>
+    <div style="text-align:center"><button id="calcFee">Calculate Fee</button></div>
+    <div class="bill" id="bill">
+      <h3 style="text-align:center;color:var(--ok)">Consultation Fee Invoice</h3>
+      <div id="lines"></div>
+      <div class="row"><span>GST (18%)</span><span id="gst"></span></div>
+      <div class="tot"><span>Total Fee</span><span id="total"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="budget">
+  <h2>Case Budget Planner</h2>
+  <div class="sub">Divide your legal budget by percentage. The total must be 100%.</div>
+  <div class="panel">
+    <div class="row"><label>Total budget (Rs.)</label><input type="number" id="amount" value="50000"></div>
+    <div class="row"><label>Consultation (%)</label><input type="number" id="p1" value="30"></div>
+    <div class="row"><label>Documentation (%)</label><input type="number" id="p2" value="25"></div>
+    <div class="row"><label>Court Fees (%)</label><input type="number" id="p3" value="35"></div>
+    <div class="row"><label>Miscellaneous (%)</label><input type="number" id="p4" value="10"></div>
+    <div style="text-align:center"><button id="evaluate">Evaluate My Budget</button></div>
+    <div class="boxes">
+      <div class="box" id="b1" style="background:#1f4fd8"></div>
+      <div class="box" id="b2" style="background:#1e8e3e"></div>
+      <div class="box" id="b3" style="background:#8e44ad"></div>
+      <div class="box" id="b4" style="background:#c2185b"></div>
+    </div>
+  </div>
+</section>
+
+<section id="notice">
+  <h2>Legal Notice Workshop</h2>
+  <div class="sub">Preview and style a sample legal notice before we draft it for you.</div>
+  <div class="panel">
+    <div class="paper" id="paper">
+      <h3>LEGAL NOTICE</h3>
+      <p>This is to notify the recipient that the undersigned advocate, acting on behalf of the client, demands compliance within 15 days of receipt of this notice.</p>
+      <div class="seal" id="seal">⚖</div>
+    </div>
+    <div class="ctrl">
+      <button class="alt" id="paperBtn">Change Paper Colour</button>
+      <button class="alt" id="sealBtn">Change Seal Colour</button>
+      <button class="alt" id="fontUp">Font Size +</button>
+      <button class="alt" id="fontDown">Font Size −</button>
+      <button class="alt" id="reset">Reset</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Justice First Legal Advisors · Mon–Sat 9:30 AM – 6:30 PM<br>
+  Disclaimer: This website is for general information only and does not create an advocate–client relationship. Built with HTML, CSS &amp; jQuery.
+</footer>
+
+<script>
+$(document).ready(function(){
+  function go(t){ $('html,body').animate({scrollTop:$(t).offset().top - 60},600); }
+  $('nav a').click(function(){ go($(this).data('go')); });
+  $('#heroBtn').click(function(){ go('#fees'); });
+  $('#tagline').hide().fadeIn(1500);
+
+  // Practice area filter and toggle
+  $('.filters button').click(function(){
+    $('.filters button').removeClass('on'); $(this).addClass('on');
+    var f=$(this).data('f');
+    if(f==='all'){ $('.area').fadeIn(300); }
+    else{ $('.area').hide(); $('.area[data-c="'+f+'"]').fadeIn(300); }
+  });
+  $('.area').click(function(){ $(this).find('.d').slideToggle(250); });
+
+  // Fee calculation
+  $('#calcFee').click(function(){
+    var sub=0, html='';
+    $('.hrs').each(function(){
+      var h=parseFloat($(this).val())||0, p=parseInt($(this).data('p'));
+      if(h>0){ sub+=h*p; html+='<div class="row"><span>'+$(this).data('n')+' × '+h+' hr</span><span>Rs.'+(h*p)+'</span></div>'; }
+    });
+    if(sub===0){ alert('Please enter hours for at least one service.'); return; }
+    var gst=Math.round(sub*0.18);
+    $('#lines').html(html); $('#gst').text('Rs.'+gst); $('#total').text('Rs.'+(sub+gst));
+    $('#bill').slideDown(400);
+  });
+
+  // Budget planner
+  $('#evaluate').click(function(){
+    var amt=parseFloat($('#amount').val()), names=['Consultation','Documentation','Court Fees','Miscellaneous'], sum=0, pcs=[];
+    $.each([1,2,3,4],function(i,n){ var v=parseFloat($('#p'+n).val())||0; pcs.push(v); sum+=v; });
+    if(isNaN(amt)||amt<=0){ alert('Please enter a valid budget amount.'); return; }
+    if(sum!==100){ alert('The amount cannot be divided: percentages add up to '+sum+'%, not 100%.'); $('.box').hide(); return; }
+    $.each(pcs,function(i,p){ $('#b'+(i+1)).html(names[i]+'<br>Rs.'+(amt*p/100).toFixed(0)).fadeIn(400); });
+  });
+
+  // Notice workshop
+  var papers=['#fffdf5','#e8f1ff','#eaf7ea','#fff0e6','#f3e9ff'], seals=['#b8923a','#c0392b','#1f4fd8','#2e7d5b','#444'], pi=0, si=0, fs=16;
+  $('#paper').css('font-size',fs);
+  $('#paperBtn').click(function(){ pi=(pi+1)%papers.length; $('#paper').css('background',papers[pi]); });
+  $('#sealBtn').click(function(){ si=(si+1)%seals.length; $('#seal').css('background',seals[si]); });
+  $('#fontUp').click(function(){ if(fs<26){ fs+=2; $('#paper').css('font-size',fs); } });
+  $('#fontDown').click(function(){ if(fs>11){ fs-=2; $('#paper').css('font-size',fs); } });
+  $('#reset').click(function(){ pi=0;si=0;fs=16; $('#paper').removeAttr('style').css('font-size',fs); $('#seal').removeAttr('style'); });
+});
+</script>
+</body>
+</html>
